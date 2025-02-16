@@ -28,10 +28,16 @@ function addDraggableContainer() {
 			const iframe = $(`#brainrotDraggableContainer-${count} iframe`);
 			draggableContainer.on("dragstart", () => {
 				iframe.css("pointer-events", "none");
+				draggableContainer.css({
+					"z-index": "9999",
+				})
 			});
 
 			draggableContainer.on("dragstop", () => {
 				iframe.css("pointer-events", "auto");
+				draggableContainer.css({
+					"z-index": "",
+				})
 			});
 		})
 		.catch((err) => console.error("Error loading HTML:", err));
