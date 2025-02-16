@@ -40,5 +40,15 @@
 		"16": "icons/placeholder.png",
 		"48": "icons/placeholder.png",
 		"128": "icons/placeholder.png"
-	}
+	},
+	"web_accessible_resources": [
+		{
+			"resources": [
+				"brainrot-viewer.html"
+			],
+			"matches": [
+				"https://*/*"
+			]
+		}
+	]
 }
