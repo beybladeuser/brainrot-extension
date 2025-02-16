@@ -1,4 +1,8 @@
-addDraggableContainer();
+chrome.runtime.onMessage.addListener((message) => {
+    if (message.action === 'addDraggableContainer') {
+        addDraggableContainer();  // Call the function when the message is received
+    }
+});
 
 function addDraggableContainer() {
 	const count = $(".brainrotDraggableContainer").length;
