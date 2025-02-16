@@ -26,11 +26,13 @@
 				"https://*/*"
 			],
 			"css": [
+				"lib/bootstrap.min.css",
 				"content.css"
 			],
 			"js": [
 				"lib/jquery-3.7.1.min.js",
 				"lib/jquery-ui.min.js",
+				"lib/bootstrap.bundle.min.js",
 				"content.js"
 			]
 		}
