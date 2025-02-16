@@ -1,5 +1,4 @@
 addDraggableContainer();
-addDraggableContainer();
 
 function addDraggableContainer() {
 	const count = $(".brainrotDraggableContainer").length;
