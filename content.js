@@ -46,6 +46,17 @@ function addDraggableContainer() {
 						"z-index": "",
 					});
 				});
+
+				const maxX = $(window).width() - draggableContainer.outerWidth();
+				const maxY = $(window).height() - draggableContainer.outerHeight();
+
+				const randomX = Math.floor(Math.random() * maxX);
+				const randomY = Math.floor(Math.random() * maxY);
+
+				draggableContainer.css({
+					left: `${randomX}px`,
+					top: `${randomY}px`
+				});
 			});
 
 		})
