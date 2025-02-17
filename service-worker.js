@@ -21,10 +21,11 @@ chrome.runtime.onInstalled.addListener(() => {
 				[`L_fcrOyoWZ8`,`560`, `315`, `yt`],
 				[`7ghSziUQnhs`,`560`, `315`, `yt`],
 				[`Xuv1wMsUz5c`,`560`, `315`, `yt`],
+				[`bjnTsq0GnoA`,`560`, `315`, `yt`],
 				[`zZ7AimPACzc`, `144`, `315`, `yt`],
-				[`HAsemyRhNj8`, `175`, `315`, `yt`],
-				[`6786a1d2e6e68`, `560`, `315`, `ph`],
-				//[`zZ7AimPACzc`, `175`, `315`]
+				[`MoDM6ppz5OE`, `250`, `315`, `yt`],
+				//[`HAsemyRhNj8`, `175`, `315`, `yt`],
+				//[`6786a1d2e6e68`, `560`, `315`, `ph`],
 			];
 			chrome.storage.sync.set({ ytEmbeds: defaultYtEmbeds });
 		}
