@@ -32,7 +32,7 @@ function addDraggableContainer() {
 			chrome.storage.sync.get(['ytEmbeds'], (settings) => {
 				const selectedEmbed = Math.floor(Math.random() * settings.ytEmbeds.length);
 
-				iframeContainer.append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/${settings.ytEmbeds[selectedEmbed]}?controls=0&amp;autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
+				iframeContainer.append(`<iframe width="${settings.ytEmbeds[selectedEmbed][1]}" height="${settings.ytEmbeds[selectedEmbed][2]}" src="https://www.youtube.com/embed/${settings.ytEmbeds[selectedEmbed][0]}?controls=0&amp;autoplay=1&amp;loop=1&amp;playlist=${settings.ytEmbeds[selectedEmbed][0]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
 
 				const iframe = $(`#brainrotDraggableContainer-${count} iframe`);
 				draggableContainer.on("dragstart", () => {
