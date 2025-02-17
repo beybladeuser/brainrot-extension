@@ -17,12 +17,13 @@ chrome.runtime.onInstalled.addListener(() => {
 	chrome.storage.sync.get(['ytEmbeds'], (settings) => {
 		if (!settings.ytEmbeds) {
 			const defaultYtEmbeds = [
-				//[vid_id, width, height]
-				[`L_fcrOyoWZ8`,`560`, `315`],
-				[`7ghSziUQnhs`,`560`, `315`],
-				[`Xuv1wMsUz5c`,`560`, `315`],
-				[`zZ7AimPACzc`, `144`, `315`],
-				[`HAsemyRhNj8`, `175`, `315`],
+				//[vid_id, width, height, platform]
+				[`L_fcrOyoWZ8`,`560`, `315`, `yt`],
+				[`7ghSziUQnhs`,`560`, `315`, `yt`],
+				[`Xuv1wMsUz5c`,`560`, `315`, `yt`],
+				[`zZ7AimPACzc`, `144`, `315`, `yt`],
+				[`HAsemyRhNj8`, `175`, `315`, `yt`],
+				[`6786a1d2e6e68`, `560`, `315`, `ph`],
 				//[`zZ7AimPACzc`, `175`, `315`]
 			];
 			chrome.storage.sync.set({ ytEmbeds: defaultYtEmbeds });

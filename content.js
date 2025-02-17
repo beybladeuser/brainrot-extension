@@ -30,9 +30,7 @@ function addDraggableContainer() {
 
 			const iframeContainer = $(`#brainrotDraggableContainer-${count} .brainrotIframeContainer`);
 			chrome.storage.sync.get(['ytEmbeds'], (settings) => {
-				const selectedEmbed = Math.floor(Math.random() * settings.ytEmbeds.length);
-
-				iframeContainer.append(`<iframe width="${settings.ytEmbeds[selectedEmbed][1]}" height="${settings.ytEmbeds[selectedEmbed][2]}" src="https://www.youtube.com/embed/${settings.ytEmbeds[selectedEmbed][0]}?controls=0&amp;autoplay=1&amp;loop=1&amp;playlist=${settings.ytEmbeds[selectedEmbed][0]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
+				iframeContainer.append(buildEmbedString(settings));
 
 				const iframe = $(`#brainrotDraggableContainer-${count} iframe`);
 				draggableContainer.on("dragstart", () => {
@@ -56,4 +54,22 @@ function addDraggableContainer() {
 
 function removeDraggableContainer(draggableContainer) {
 	draggableContainer.remove();
+}
+
+function buildEmbedString(settings) {
+	const selectedEmbed = Math.floor(Math.random() * settings.ytEmbeds.length);
+
+	const id = settings.ytEmbeds[selectedEmbed][0];
+	const width = settings.ytEmbeds[selectedEmbed][1];
+	const height = settings.ytEmbeds[selectedEmbed][2];
+	const platform = settings.ytEmbeds[selectedEmbed][3];
+
+	if (platform == "yt") {
+		//youtube embed
+		return `<iframe width="${width}" height="${height}" src="https://www.youtube.com/embed/${id}?controls=0&amp;autoplay=1&amp;loop=1&amp;playlist=${id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+	}
+	else if (platform == "ph") {
+		//uwu embed
+		return `<iframe src="https://www.pornhub.com/embed/${id}" frameborder="0" width="${width}" height="${height}" scrolling="no" allowfullscreen></iframe>`
+	}
 }
