@@ -1,7 +1,8 @@
-document.getElementById("addBrainrotViewer").addEventListener("click", async () => {
-    chrome.runtime.sendMessage({ action: 'addDraggableContainer' });
+$("#addBrainrotViewer").on("click", async () => {
+    const mult = $("#addBrainrotViewerMult").val();
+    chrome.runtime.sendMessage({ action: 'addDraggableContainer', mult: mult });
 });
 
-document.getElementById("removeAllBrainrotViewer").addEventListener("click", async () => {
+$("#removeAllBrainrotViewer").on("click", async () => {
     chrome.runtime.sendMessage({ action: 'removeAllDraggableContainer' });
 });

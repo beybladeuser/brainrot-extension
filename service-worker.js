@@ -5,7 +5,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 			const activeTab = tabs[0];
 			if (activeTab && activeTab.id) {
 				// Send a message to the content script
-				chrome.tabs.sendMessage(activeTab.id, { action: 'addDraggableContainer' });
+				chrome.tabs.sendMessage(activeTab.id, { action: 'addDraggableContainer', mult: message.mult });
 			}
 		});
 	}

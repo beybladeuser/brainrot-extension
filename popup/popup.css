@@ -1,0 +1,8 @@
+#popupContainer {
+	min-width: 250px;	
+}
+
+#addBrainrotViewerMult {
+    max-width: 50px; /* Adjust as needed */
+    text-align: center;
+}
