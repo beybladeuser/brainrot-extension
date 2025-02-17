@@ -24,6 +24,10 @@ function addDraggableContainer() {
 		.then((response) => response.text())
 		.then((html) => {
 			draggableContainer.append(html);
+			$(`#brainrotDraggableContainer-${count} .brainrotViewerRemoveButton`).on("click", () => {
+				removeDraggableContainer(draggableContainer);
+			});
+
 			const iframeContainer = $(`#brainrotDraggableContainer-${count} .brainrotIframeContainer`);
 			chrome.storage.sync.get(['ytEmbeds'], (settings) => {
 				iframeContainer.append(settings.ytEmbeds[1]);
@@ -33,18 +37,21 @@ function addDraggableContainer() {
 					iframe.css("pointer-events", "none");
 					draggableContainer.css({
 						"z-index": "9999",
-					})
+					});
 				});
 
 				draggableContainer.on("dragstop", () => {
 					iframe.css("pointer-events", "auto");
 					draggableContainer.css({
 						"z-index": "",
-					})
+					});
 				});
 			});
 
 		})
 		.catch((err) => console.error("Error loading HTML:", err));
+}
 
+function removeDraggableContainer(draggableContainer) {
+	draggableContainer.remove();
 }
