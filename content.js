@@ -12,8 +12,7 @@ function addDraggableContainer() {
 	count = $("#brainrotDraggableContainerCount").val();
 
 	$("body").append(`
-        <div id="brainrotDraggableContainer-${count}" class="brainrotDraggableContainer">
-		</div>
+        <div id="brainrotDraggableContainer-${count}" class="brainrotDraggableContainer"></div>
     `);
 
 	const draggableContainer = $(`#brainrotDraggableContainer-${count}`);
@@ -25,20 +24,26 @@ function addDraggableContainer() {
 		.then((response) => response.text())
 		.then((html) => {
 			draggableContainer.append(html);
-			const iframe = $(`#brainrotDraggableContainer-${count} iframe`);
-			draggableContainer.on("dragstart", () => {
-				iframe.css("pointer-events", "none");
-				draggableContainer.css({
-					"z-index": "9999",
-				})
+			const iframeContainer = $(`#brainrotDraggableContainer-${count} .brainrotIframeContainer`);
+			chrome.storage.sync.get(['ytEmbeds'], (settings) => {
+				iframeContainer.append(settings.ytEmbeds[1]);
+
+				const iframe = $(`#brainrotDraggableContainer-${count} iframe`);
+				draggableContainer.on("dragstart", () => {
+					iframe.css("pointer-events", "none");
+					draggableContainer.css({
+						"z-index": "9999",
+					})
+				});
+
+				draggableContainer.on("dragstop", () => {
+					iframe.css("pointer-events", "auto");
+					draggableContainer.css({
+						"z-index": "",
+					})
+				});
 			});
 
-			draggableContainer.on("dragstop", () => {
-				iframe.css("pointer-events", "auto");
-				draggableContainer.css({
-					"z-index": "",
-				})
-			});
 		})
 		.catch((err) => console.error("Error loading HTML:", err));
 
