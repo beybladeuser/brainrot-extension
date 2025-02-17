@@ -23,7 +23,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 //init default options
 chrome.runtime.onInstalled.addListener(() => {
 	// Set default options if they don't exist already
-	chrome.storage.sync.get(['ytEmbeds'], (settings) => {
+	chrome.storage.sync.get(['ytEmbeds', 'ytEmbedsParamCount'], (settings) => {
 		if (!settings.ytEmbeds) {
 			const defaultYtEmbeds = [
 				//[vid_id, width, height, platform]
@@ -37,6 +37,9 @@ chrome.runtime.onInstalled.addListener(() => {
 				//[`6786a1d2e6e68`, `560`, `315`, `ph`],
 			];
 			chrome.storage.sync.set({ ytEmbeds: defaultYtEmbeds });
+		}
+		if (!settings.ytEmbedsParamCount) {
+			chrome.storage.sync.set({ ytEmbedsParamCount: 4 });
 		}
 	});
 });
