@@ -1,6 +1,9 @@
 chrome.runtime.onMessage.addListener((message) => {
 	if (message.action === 'addDraggableContainer') {
-		addDraggableContainer();  // Call the function when the message is received
+		addDraggableContainer();
+	}
+	if (message.action === 'removeAllDraggableContainer') {
+		removeDraggableContainer($(".brainrotDraggableContainer"));
 	}
 });
 
